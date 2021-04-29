@@ -1,0 +1,8 @@
+FROM alpine:3.4
+<In this section you might need to run as ROOT to set up your machine. Install, mount, etc>
+RUN groupadd -r myuser && useradd -r -g myuser myuser
+RUN apk update
+RUN apk add vim
+RUN apk add curl
+<Once you're done with the actions that need ROOT permissions, switch to your unprivileged user>  
+USER myuser
