@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    runAsGroup: 780
+    fsGroup: 2000
+  volumes:
+  - name: sec-ctx-vol
+    emptyDir: {}
+  containers:
+  - name: sec-ctx-demo
+    image: busybox
+    command: [ "sh", "-c", "sleep 1h" ]
+    volumeMounts:
+    - name: sec-ctx-vol
+      mountPath: /data/demo
+    securityContext:
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+    resources:
+      limits:
+        memory: "200Mi"
+  - name: sec-ctx-demo2
+    image: busybox2
+    command: [ "sh", "-c", "sleep 1h" ]
+    volumeMounts:
+    - name: sec-ctx-vol
+    mountPath: /data/demo
+    securityContext:
+     allowPrivilegeEscalation: false
+     runAsNonRoot: true
+    resources:
+      limits:
+        cpu: "1"
+  - name: sec-ctx-demo3
+    image: busybox3
+    command: [ "sh", "-c", "sleep 1h" ]
+    volumeMounts:
+    - name: sec-ctx-vol
+      mountPath: /data/demo
+
