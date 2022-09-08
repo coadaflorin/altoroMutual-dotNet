@@ -69,8 +69,7 @@ namespace Altoro
       OleDbConnection myConnection = new OleDbConnection();
       myConnection.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnStr"].ConnectionString;
       myConnection.Open();
-      
-      string query = "SELECT * From users WHERE userid = " + UserId;
+
       OleDbDataAdapter myAccounts = new OleDbDataAdapter(query, myConnection);
 
       DataSet ds = new DataSet();
