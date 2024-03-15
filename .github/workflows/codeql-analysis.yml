@@ -13,9 +13,9 @@ name: "vika's CodeQL for .NET"
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   schedule:
     - cron: '15 5 * * 3'
 
